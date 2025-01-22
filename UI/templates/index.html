@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Classification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <h2 class="centered-title">Chọn mô hình </h2>
+            <form method="POST" enctype="multipart/form-data">
+                <!-- Chọn mô hình -->
+                <select name="model" id="model" style="margin-bottom: 100px;">
+                    <option value="DenseNet">DenseNet</option>
+                    <option value="Resnet50">ResNet50</option>
+                    <option value="Vgg19">VGG19</option>
+                </select>
+                <!-- Chọn ảnh -->
+                <h2 class="centered-title" >Chọn ảnh để tải lên </h2>
+                <input type="file" name="image" accept="image/*">
+                <button type="submit"> Dự đoán</button>
+            </form>
+            <div class="upload-zip">
+            <a href="{{ url_for('upload_zip') }}" class="upload-zip-link">Dự đoán với nhiều ảnh </a>
+        </div>
+    </div>
+        <!-- Show ảnh và kết quả -->
+        <div class="cover-right">
+        <div class="right-panel">
+            
+            <h2 class="centered-title" style="padding-bottom: 10px;color: #cf9548;">KẾT QUẢ DỰ ĐOÁN</h2>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <ul>
+                        {% for category, message in messages %}
+                            <li style="font-weight: bold;font-size: 20px; color:rgb(255, 255, 255);" class="{{ category }}">
+                                {{ message }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        
+            {% if prediction %}
+                <h2 style="text-align: center; border-bottom: #7cfbb48 2px solid;color:#cfbb48;">{{ model_name }} </h2>
+            <div class="prediction-results">
+                <ul>
+                    {% for class_name, prob in prediction.items() %}
+                        <li class="prediction-item" 
+                            style="font-weight: bold; 
+                                   background-color: {{ 'rgb(127, 222, 129)' if class_name == max_class else 'none' }};
+                                   color: {{ '#0a7300' if class_name == max_class else 'none' }};
+                                   border:{{ '#0a7300 solid 4px' if class_name == max_class  }};">
+                            {{ class_name }}: {{ prob * 100 }}%
+                        </li>
+                    {% endfor %}
+                </ul>
+                </div>
+            </div>
+            {% else %}
+                <p style="font-weight: bold;font-size: 20px; color:red;">Không có kết quả dự đoán.</p>
+            {% endif %}
+                <div class="con-img">
+            {% if image_name %}
+            <h3 style="margin-top: 20px ;padding-top: 10px; text-align:center; color: rgb(127, 222, 129);">ẢNH ĐÃ CHỌN</h3>
+            <div style="text-align: center;">
+                <img style="padding-top: 20px;" src="{{ url_for('uploaded_file', filename=image_name) }}" alt="Uploaded Image" >
+            </div>
+        {% endif %}
+    </div>
+        </div>
+        </div>
+        
+</body>
+</html>

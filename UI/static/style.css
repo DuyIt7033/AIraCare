@@ -1,0 +1,256 @@
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #4f5d5f;
+    color: #F5F5F5; 
+    height: 100vh; 
+}
+
+.container {
+    display: flex;
+    height: 100%; 
+    max-width: 100%; 
+    padding: 20px;
+}
+
+.left-panel {
+    flex: 2;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #3C3D37; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); 
+   
+}
+.cover-right{
+    flex: 8;
+    display: flex;
+}
+.right-panel {
+    flex: 4;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #3C3D37; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+.con-img{
+    overflow: hidden;
+    flex: 6;
+    border-radius: 10px;
+    background-color: #3C3D37; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    height: 95vh;
+}
+h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #48CFCB; 
+    padding-bottom: 10px;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+select {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #48CFCB; 
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #3C3D37; 
+    color: #F5F5F5; 
+    transition: border-color 0.3s;
+}
+
+select:focus {
+    border-color: #229799; 
+    outline: none;
+}
+
+/* File Input */
+input[type="file"] {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #48CFCB; 
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #3C3D37; 
+    color: #F5F5F5;
+}
+
+button {
+    background-color: #48CFCB;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #229799; 
+}
+
+.prediction-results {
+    margin-top: 20px;
+}
+
+.prediction-item {
+    background-color:none; 
+    border-radius: 10px ; 
+    border: #c79500 3px solid;
+    padding: 25px;
+    margin-bottom: 10px;
+    color: #cfb248;
+}
+ul{
+    list-style-type: none;
+}
+.centered-title{
+ text-align: center;
+    
+}
+
+img{
+    object-fit: cover;
+    height:auto;
+    width:90%;
+    max-width: 600px;
+    max-height: 500px;
+}
+
+
+/* <<>> */
+/* Thêm class cho update_zip.html */
+
+/* Container chung */
+.upload-container {
+    max-width: 1000px;
+    display: flex;
+    margin: 0 auto;
+    background-color: #3C3D37; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Form Panel */
+.form-panel {
+    max-width: 900px;
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 0 100px;
+}
+
+.form-title {
+    text-align: center;
+    font-size: 24px;
+    color: #48CFCB; 
+}
+
+.form-select, .file-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #48CFCB;
+    border-radius: 5px;
+    background-color: #3C3D37;
+    color: #F5F5F5;
+    transition: border-color 0.3s ease;
+}
+
+.form-select:hover, .file-input:hover {
+    border-color: #229799;
+}
+
+.form-button {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #48CFCB;
+    color: #F5F5F5;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+    background-color: #229799;
+}
+
+/* Results Panel */
+.results-panel {
+    flex: 6;
+    margin-top: 30px;
+    background-color: #4f5d5f;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.results-title {
+    text-align: center;
+    font-size: 24px;
+    color: #48CFCB;
+    margin-bottom: 15px;
+}
+
+.results-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.result-item {
+    padding: 10px;
+    border: 1px solid #c79500;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #cfb248;
+    background-color: #3C3D37;
+}
+    
+/* Link Upload ZIP */
+.upload-zip {
+    margin-top: 100px;
+    text-align: center;
+    
+}
+
+.upload-zip-link {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #48CFCB; 
+    background-color: #3C3D37; 
+    padding: 10px 20px;
+    border: 1px solid #48CFCB;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.upload-zip-link:hover {
+    background-color: #229799; /* Màu hover */
+    border-color: #229799;
+}
+
+.message_zip{
+    background-color:#996722;
+    border-radius: 15px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    max-width: fit-content;
+    text-align: center;
+}

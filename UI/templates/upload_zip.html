@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload ZIP</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container upload-container">
+        <!-- Form chọn mô hình và tải lên ZIP -->
+        <div class="form-panel">
+            <h2 class="form-title">Chọn mô hình và tải tệp ZIP</h2>
+            <form method="POST" enctype="multipart/form-data">
+                <label for="model">Chọn mô hình:</label>
+                <select name="model" id="model" class="form-select">
+                    <option value="DenseNet">DenseNet</option>
+                    <option value="Resnet50">ResNet50</option>
+                    <option value="Vgg19">VGG19</option>
+                </select>
+                
+                <label for="zip_file">Chọn tệp nén ( ZIP ):</label>
+                <input type="file" name="zip_file" accept=".zip" class="file-input">
+                
+                <button type="submit" class="form-button">Dự đoán</button>
+            </form>
+            <div class="message_zip">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <ul>
+                        {% for category, message in messages %}
+                            <li style="font-weight: bold;font-size: 20px; color:rgb(255, 255, 255);" class="{{ category }}">
+                                {{ message }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
+        </div>
+
+        <!-- Hiển thị kết quả -->
+        {% if results %}
+        <div class="results-panel">
+            
+            <h2 class="results-title" style="color: orange;">Kết quả dự đoán của {{ model_name }}:</h2>
+            <ul class="results-list">
+                {% for class_name, count in results.items() %}
+                    <li class="result-item">{{ class_name }}: {{ count }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
